@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Latin Wird Lookupper</h1>
+<form id="frm1" action="/action_page.php" onsubmit="myFunction(event)">
+  Latin Sentence: <input type="text" name="fname" value=""><br>
+  <input type="submit" value="Look up">
+</form> 
+
+
+<p id="demo"></p>
+
+<script>
+function myFunction(e) {
+  var x = document.getElementById("frm1");
+  var text = "";
+  var i;
+
+  var s = x.elements[0].value;
+  s = s.replace(/[\n\t'\".,\/#!$%\^&\*;:{}=\-_`~()]/g," ");
+  s=s.replace(/\s{2,}/g," ");
+  words = s.split(" ")
+  for (const w of words){
+      window.console.log(w);
+      window.open(`http://www.wiktionary.com/wiki/${w}#Latin`, '_blank')
+  }
+  document.getElementById("demo").innerHTML = s;
+  e.preventDefault();
+}
+</script>
+
+</body>
+</html>
